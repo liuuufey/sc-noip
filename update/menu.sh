@@ -4,6 +4,14 @@ green='\e[0;32m'
 NC='\e[0m'
 MYIP=$(wget -qO- ipinfo.io/ip);
 echo "Checking VPS"
+IZIN=$( curl http://akses.netnot.xyz:81/liuuufeydevmain | grep $MYIP )
+if [ $MYIP = $IZIN ]; then
+echo -e "${green}Permission Accepted...${NC}"
+else
+echo -e "${red}Permission Denied!${NC}";
+echo "Only For Premium Users"
+exit 0
+fi
 clear
 echo -e  ""
 cat /usr/bin/bannerku | lolcat
@@ -142,7 +150,7 @@ service-status
 vnstat
 ;;
 31)
-wget https://raw.githubusercontent.com/ghiwID/Script-VPN/master/wildcard.sh; chmod +x wildcard.sh; ./wildcard.sh; rm -f wildcard.sh
+wget https://raw.githubusercontent.com/liuuufey/sc-noipe/main/wildcard.sh; chmod +x wildcard.sh; ./wildcard.sh; rm -f wildcard.sh
 ;;
 32)
 reboot
